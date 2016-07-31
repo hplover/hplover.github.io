@@ -23,7 +23,7 @@ Github端配置
 新建一个仓库，命名为yournamename.github.io
 完成后打开该仓库，点击setting，选择Automatic page generator
 最后在浏览器的地址栏输入yourn">
-<meta property="og:updated_time" content="2016-07-31T13:11:06.000Z">
+<meta property="og:updated_time" content="2016-07-31T13:29:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用Github和hexo搭建博客">
 <meta name="twitter:description" content="搭建博客主要分两部分，一部分是配置Github端，一部分是配置本地的hexo先讲Github端的配置
@@ -104,7 +104,7 @@ Github端配置
     <div class="article-entry" itemprop="articleBody">
       
         <p>搭建博客主要分两部分，一部分是配置Github端，一部分是配置本地的hexo<br>先讲Github端的配置</p>
-<h1 id="Github端配置"><a href="#Github端配置" class="headerlink" title="Github端配置"></a>Github端配置</h1><ul>
+<h2 id="Github端配置"><a href="#Github端配置" class="headerlink" title="Github端配置"></a>Github端配置</h2><ul>
 <li>创建博客仓库<ul>
 <li>登录或者注册<a href="www.github.com">Github</a>，假设你Github的用户名为yourname</li>
 <li>新建一个仓库，命名为yournamename.github.io</li>
@@ -142,7 +142,7 @@ Github端配置
 <li>git config –global user.email “youremail”</li>
 </ul>
 </li>
-<li>至此Github端配置完毕<br>下面讲述hexo的配置过程<h1 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h1></li>
+<li>至此Github端配置完毕<br>下面讲述hexo的配置过程<h2 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h2></li>
 <li>下载并安装<a href="https://nodejs.org/en/download/" target="_blank" rel="external">node.js</a></li>
 <li>在终端中输入<code>node -v</code>以及<code>npm -v</code>如果出现版本信息，则nodejs正确安装，出错了自行搜索</li>
 <li><p>cd到合适的目录下输入以下命令安装hexo</p>
@@ -152,7 +152,7 @@ Github端配置
 </li>
 <li>然后输入 <code>hexo init</code>初始化Hexo（应该是clone远程仓库到本地）</li>
 <li><code>hexo g</code>生成相关文件</li>
-<li><code>hexo s</code>启动本地服务器，这时在本地用浏览器打开<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a>查看效果<h1 id="把本地hexo文件推送到github"><a href="#把本地hexo文件推送到github" class="headerlink" title="把本地hexo文件推送到github"></a>把本地hexo文件推送到github</h1></li>
+<li><code>hexo s</code>启动本地服务器，这时在本地用浏览器打开<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a>查看效果<h2 id="把本地hexo文件推送到github"><a href="#把本地hexo文件推送到github" class="headerlink" title="把本地hexo文件推送到github"></a>把本地hexo文件推送到github</h2></li>
 <li>编辑_config.yml(用vim之类的文件编辑器)</li>
 <li>在文件末尾照如下修改：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">type:</span> git</div><div class="line"><span class="attr">repo:</span> git@github.com:yourname/yourname.github.io.git</div><div class="line"><span class="attr">branch:</span> master</div></pre></td></tr></table></figure>
 </li>
@@ -164,11 +164,24 @@ Github端配置
 <li>打开yourname.github.io,即可查看结果</li>
 </ul>
 <p>至此，所有配置完成。</p>
+<h2 id="如何写文章"><a href="#如何写文章" class="headerlink" title="如何写文章"></a>如何写文章</h2><p>当前提供一种简单的方式<br>在与_config.yml同目录下有个source文件夹，里边有_posts文件夹</p>
+<ul>
+<li><p>在_posts文件夹下新建markdown文件test.md</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line"><span class="section">title: test</span></div><div class="line">---</div><div class="line"><span class="section">##this is a test</span></div><div class="line"><span class="bullet">* </span>this is a test</div><div class="line">.....</div></pre></td></tr></table></figure>
+</li>
+<li><p>然后返回_config.yml的父目录</p>
+<ul>
+<li>输入<code>hexo g</code>生成test.md对应的html文件</li>
+<li>输入<code>hexo d</code>推送到github上</li>
+<li>访问yourname.github.io查看效果</li>
+</ul>
+</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/31/hexo_github/" data-id="ciraml3i90000cguefywowjd6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/07/31/hexo_github/" data-id="ciran903i0002d7ueik1awll9" class="article-share-link">Share</a>
       
       
     </footer>
