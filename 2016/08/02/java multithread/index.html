@@ -3,14 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>plover&#39;s blog</title>
+  <title>java 多线程 | plover&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="plover's blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="await() 与 signal()一个处于await()的线程被另一个线程signal()唤醒之后会接着执行await()之后的语句1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java 多线程">
+<meta property="og:url" content="http://yoursite.com/2016/08/02/java multithread/index.html">
 <meta property="og:site_name" content="plover's blog">
+<meta property="og:description" content="await() 与 signal()一个处于await()的线程被另一个线程signal()唤醒之后会接着执行await()之后的语句1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
+<meta property="og:updated_time" content="2016-08-02T09:42:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="plover's blog">
+<meta name="twitter:title" content="java 多线程">
+<meta name="twitter:description" content="await() 与 signal()一个处于await()的线程被另一个线程signal()唤醒之后会接着执行await()之后的语句1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071">
   
     <link rel="alternate" href="/atom.xml" title="plover&#39;s blog" type="application/atom+xml">
   
@@ -59,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-java multithread" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-java multithread" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/08/02/java multithread/" class="article-date">
   <time datetime="2016-08-02T08:38:03.000Z" itemprop="datePublished">2016-08-02</time>
@@ -74,8 +76,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/02/java multithread/">java 多线程</a>
+    <h1 class="article-title" itemprop="name">
+      java 多线程
     </h1>
   
 
@@ -99,213 +101,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-hexo_github" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/08/01/hexo_github/" class="article-date">
-  <time datetime="2016-08-01T14:21:11.000Z" itemprop="datePublished">2016-08-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/01/hexo_github/">利用Github和hexo搭建博客</a>
-    </h1>
+    <a href="/2016/08/01/hexo_github/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">利用Github和hexo搭建博客</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>搭建博客主要分两部分，一部分是配置Github端，一部分是配置本地的hexo<br>先讲Github端的配置</p>
-<h2 id="Github端配置"><a href="#Github端配置" class="headerlink" title="Github端配置"></a>Github端配置</h2><ul>
-<li>创建博客仓库<ul>
-<li>登录或者注册<a href="www.github.com">Github</a>，假设你Github的用户名为yourname</li>
-<li>新建一个仓库，命名为yournamename.github.io</li>
-<li>完成后打开该仓库，点击setting，选择Automatic page generator</li>
-<li>最后在浏览器的地址栏输入yourname.github.io即可看到自己的博客</li>
-<li>至此，博客仓库创建完毕</li>
-</ul>
-</li>
-<li><p>安装git</p>
-<ul>
-<li>linux和mac用户输入git，按提示安装git</li>
-<li>windows用户下载<a href="https://git-scm.com/download/win" target="_blank" rel="external">git</a></li>
-</ul>
-</li>
-<li><p>配置ssh<br>  windows用户打开git bash, linux和mac打开终端</p>
-<ul>
-<li>输入<code>cd ~/.ssh &amp;&amp; ssh-keygen</code> 这一步生成密钥，一路按回车即可</li>
-<li>复制id_ras.pub到剪切板<ul>
-<li>On OS X run: cat id_rsa.pub | pbcopy</li>
-<li>Linux run: cat id_rsa.pub | xclip</li>
-<li>On Windows (via Cygwin/Git Bash) run: cat id_rsa.pub | clip</li>
-</ul>
-</li>
-<li>打开github的<a href="https://github.com/settings/keys" target="_blank" rel="external">ssh设置页面</a><ul>
-<li>点击新建ssh key</li>
-<li>把剪切板的内容复制到key栏中（title栏自便）</li>
-<li>点击Add SSH key（出于安全考虑Github会让输入密码）</li>
-</ul>
-</li>
-<li>至此ssh配置完毕</li>
-</ul>
-</li>
-<li>配置本地git<ul>
-<li>git config –global user.name “yourname”</li>
-<li>git config –global user.email “youremail”</li>
-</ul>
-</li>
-<li>至此Github端配置完毕<br>下面讲述hexo的配置过程<h2 id="Hexo配置"><a href="#Hexo配置" class="headerlink" title="Hexo配置"></a>Hexo配置</h2></li>
-<li>下载并安装<a href="https://nodejs.org/en/download/" target="_blank" rel="external">node.js</a></li>
-<li>在终端中输入<code>node -v</code>以及<code>npm -v</code>如果出现版本信息，则nodejs正确安装，出错了自行搜索</li>
-<li><p>cd到合适的目录下输入以下命令安装hexo</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div><div class="line">npm install hexo --save</div><div class="line">//如果出现warning之类的错误，也没有关系</div></pre></td></tr></table></figure>
-</li>
-<li><p>输入<code>hexo -v</code> 查看hexo的版本信息，如果正确显示，则意味着这hexo正确安装</p>
-</li>
-<li>然后输入 <code>hexo init</code>初始化Hexo（应该是clone远程仓库到本地）</li>
-<li><code>hexo g</code>生成相关文件</li>
-<li><code>hexo s</code>启动本地服务器，这时在本地用浏览器打开<a href="localhost:4000" target="_blank" rel="external">localhost:4000</a>查看效果<h2 id="把本地hexo文件推送到github"><a href="#把本地hexo文件推送到github" class="headerlink" title="把本地hexo文件推送到github"></a>把本地hexo文件推送到github</h2></li>
-<li>编辑_config.yml(用vim之类的文件编辑器)</li>
-<li>在文件末尾照如下修改：<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">type:</span> git</div><div class="line"><span class="attr">repo:</span> git@github.com:yourname/yourname.github.io.git</div><div class="line"><span class="attr">branch:</span> master</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注意冒号后面有空格</p>
-<ul>
-<li>安装git插件<code>npm install hexo-deployer-git --save</code></li>
-<li>输入<code>hexo d</code>把本地hexo生成的文件推送到github</li>
-<li>打开yourname.github.io,即可查看结果</li>
-</ul>
-<p>至此，所有配置完成。</p>
-<h2 id="如何写文章"><a href="#如何写文章" class="headerlink" title="如何写文章"></a>如何写文章</h2><p>当前提供一种简单的方式<br>在与_config.yml同目录下有个source文件夹，里边有_posts文件夹</p>
-<ul>
-<li><p>在_posts文件夹下新建markdown文件test.md</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line"><span class="section">title: test</span></div><div class="line">---</div><div class="line"><span class="section">##this is a test</span></div><div class="line"><span class="bullet">* </span>this is a test</div><div class="line">.....</div></pre></td></tr></table></figure>
-</li>
-<li><p>然后返回_config.yml的父目录</p>
-<ul>
-<li>输入<code>hexo g</code>生成test.md对应的html文件</li>
-<li>输入<code>hexo d</code>推送到github上<ul>
-<li>或者直接输入<code>hexo d -g</code>一步推送</li>
-</ul>
-</li>
-<li>访问yourname.github.io查看效果</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/08/01/hexo_github/" data-id="circ4j22w0000ujuexybz14mn" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/31/test/" class="article-date">
-  <time datetime="2016-07-30T16:54:54.000Z" itemprop="datePublished">2016-07-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/31/test/">test</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Just a test<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/31/test/" data-id="circ4j2350002ujueimwkq8r1" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/07/31/hello-world/" class="article-date">
-  <time datetime="2016-07-30T16:46:54.000Z" itemprop="datePublished">2016-07-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/07/31/hello-world/" data-id="circ4j2320001ujuecilbixlw" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
