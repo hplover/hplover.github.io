@@ -7,7 +7,7 @@
 
 <html class="theme-next muse use-motion">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -112,7 +112,7 @@
 
   <link rel="canonical" href="http://yoursite.com/"/>
 
-  <title> plover's blog </title>
+  <title> plover's blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -133,7 +133,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -235,6 +235,249 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/17/实体链接技术/" itemprop="url">
+                  实体链接技术研究
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T10:25:49+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>实体链指的主要目标是识别<em>文本中名称</em>指代哪个现实世界中的<em>实体</em>。具体而言,实体链指是将给定文本中的<code>个名称字符串映射到知识库中的相应实体</code>上去,如果知识库尚未收录相应实体,则返回空标记。近些年,美国国家 标准技术研究所(NIST)举办了多次以实体链指为核心的国际评测任务。实体 链指在<u>信息抽取、问答系统、机器翻译、信息检索</u>等多个自然语言任务中都有着广泛的应用。</p>
+</blockquote>
+<h2 id="实体链接的定义"><a href="#实体链接的定义" class="headerlink" title="实体链接的定义"></a>实体链接的定义</h2><ul>
+<li>$\mathbb{E}$: <strong>所有实体</strong>的集合</li>
+<li>$\mathbb{K}$: $\mathbb{E}$的一个<strong>子集</strong>,称作<strong>知识库</strong></li>
+<li>$\mathbb{D}$: 文档集</li>
+<li>q: 实体链指的<strong>输入</strong>, 两部分构成：查询文档$\mathcal{D}(\mathcal{D} \in \mathbb{D})(Query\ Document)$、查询名称$m\ (m \subset \mathcal{D})(mention\ name)$</li>
+<li>e: m所对应的目标实体</li>
+</ul>
+<img src="/2016/08/17/实体链接技术/definition.jpg" alt="definition.jpg" title="">
+<figure class="highlight xml"><figcaption><span>a microblog</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">weibo</span> <span class="attr">id</span>=<span class="string">”1”</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">content</span> &gt;</span>北京时间3月12日，2013亚冠联赛小组赛第二轮，广州恒大足球俱乐部客场挑战全北现代，广州恒大首发已经公布<span class="tag">&lt;/<span class="name">content</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span> <span class="attr">id</span>=<span class="string">”1”</span> &gt;</span>广州恒大俱乐部<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">startoffset</span> <span class="attr">id</span>=<span class="string">”1”</span> &gt;</span>25<span class="tag">&lt;/<span class="name">startoffset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">endoffset</span> <span class="attr">id</span>=<span class="string">”1”</span> &gt;</span>34<span class="tag">&lt;/<span class="name">endoffset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kb</span> <span class="attr">id</span>=<span class="string">”1”</span> &gt;</span>KBxxxx<span class="tag">&lt;<span class="name">kb</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span> <span class="attr">id</span>=<span class="string">”2”</span> &gt;</span>全被现代<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">startoffset</span> <span class="attr">id</span>=<span class="string">”2”</span> &gt;</span>38<span class="tag">&lt;/<span class="name">startoffset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">endoffset</span> <span class="attr">id</span>=<span class="string">”2”</span> &gt;</span>42<span class="tag">&lt;/<span class="name">endoffset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kb</span> <span class="attr">id</span>=<span class="string">”2”</span> &gt;</span>KByyyy<span class="tag">&lt;<span class="name">kb</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">name</span> <span class="attr">id</span>=<span class="string">”3”</span> &gt;</span>广州恒大<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">startoffset</span> <span class="attr">id</span>=<span class="string">”3”</span> &gt;</span>43<span class="tag">&lt;/<span class="name">startoffset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">endoffset</span> <span class="attr">id</span>=<span class="string">”3”</span> &gt;</span>47<span class="tag">&lt;/<span class="name">endoffset</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">kb</span> <span class="attr">id</span>=<span class="string">”3”</span> &gt;</span>KBxxxx<span class="tag">&lt;<span class="name">kb</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">weibo</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight xml"><figcaption><span>an entity</span></figcaption><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">entity</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">entity_id</span>&gt;</span>KBBD000001<span class="tag">&lt;/<span class="name">entity_id</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">category</span>&gt;</span>人物\自然科学\科学家<span class="tag">&lt;/<span class="name">category</span>&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>阿尔伯特·爱因斯坦<span class="tag">&lt;/<span class="name">name</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">fact</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">中文名(Chinese</span> <span class="attr">Name</span>)&gt;</span>阿尔伯特·爱因斯坦<span class="tag">&lt;/<span class="name">中文名(Chinese</span> <span class="attr">Name</span>)&gt;</span> </div><div class="line"><span class="tag">&lt;<span class="name">英文名(English</span> <span class="attr">Name</span>)&gt;</span>Albert Einstein<span class="tag">&lt;/<span class="name">英文名(English</span> <span class="attr">Name</span>)&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">fact</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">entity</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="实体链接面临的问题"><a href="#实体链接面临的问题" class="headerlink" title="实体链接面临的问题"></a>实体链接面临的问题</h2><p>一义多词，一词多义的问题<br><img src="/2016/08/17/实体链接技术/kobe.png" alt="Kobe Bryant and his nick name" title="Kobe Bryant and his nick name"></p>
+<h2 id="实体链接的步骤"><a href="#实体链接的步骤" class="headerlink" title="实体链接的步骤"></a>实体链接的步骤</h2><ul>
+<li>实体抽取: <em>实体发现(entity discovery)，实体识别(entity recognization)</em><ul>
+<li><em>实体类别(人名、地名、组织名)</em> name of book, movie, music, cuisine，fauna, herb</li>
+<li>无论是TAC还是NLPCC举办的实体链接任务，实体抽取（实体发现）<strong>都已经做了</strong></li>
+</ul>
+</li>
+<li>实体候选集生成: <ul>
+<li>生成的实体候选集圈定了候选实体的范围</li>
+<li>消歧在此范围内选择最适合上下文的实体作为链指结果</li>
+<li>候选实体集合的质量与两个因素有关:<ol>
+<li>是否包含目标实体</li>
+<li>候选实体的数目</li>
+</ol>
+</li>
+<li>候选生成的主要目标:<ol>
+<li>包含目标实体</li>
+<li>集合越小越好</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>实体消歧<ul>
+<li>从候选集合中找到最适合上下文的实体作为链指结果。</li>
+</ul>
+</li>
+</ul>
+<img src="/2016/08/17/实体链接技术/disambiguation.jpg" alt="an example of entity disambiguation" title="an example of entity disambiguation">
+<h2 id="实体链接技术"><a href="#实体链接技术" class="headerlink" title="实体链接技术"></a>实体链接技术</h2><table>
+<thead>
+<tr>
+<th style="text-align:center">长文本</th>
+<th style="text-align:center">短文本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">内容丰富</td>
+<td style="text-align:center">内容单一</td>
+</tr>
+<tr>
+<td style="text-align:center">噪音少</td>
+<td style="text-align:center">噪音多</td>
+</tr>
+<tr>
+<td style="text-align:center">冗余少</td>
+<td style="text-align:center">冗余多</td>
+</tr>
+</tbody>
+</table>
+<h3 id="长文本实体链接"><a href="#长文本实体链接" class="headerlink" title="长文本实体链接"></a>长文本实体链接</h3><ul>
+<li>基于图的技术：<img src="/2016/08/17/实体链接技术/java_mount.png" alt="entity linking based on graph" title="entity linking based on graph"></li>
+<li>基于上下文概率的技术：<br>$P(e \in D) = P(W_{e}\mid W_{1}W_{2}\ldots W_{n})$</li>
+</ul>
+<h3 id="短文本实体链接"><a href="#短文本实体链接" class="headerlink" title="短文本实体链接"></a>短文本实体链接</h3><h5 id="文本噪音"><a href="#文本噪音" class="headerlink" title="文本噪音"></a>文本噪音</h5><ol>
+<li>错别字(misspell)<ul>
+<li>中文：同音异形(<code>拼音距离</code>，<code>模糊匹配</code>)<ul>
+<li><strong>孙杨-&gt;孙扬</strong></li>
+</ul>
+</li>
+<li>英文：字母错误，字母交换，间隔符(<a href="https://en.wikipedia.org/wiki/Jaccard_index" target="_blank" rel="external">jaccard distance</a>, <a href="https://en.wikipedia.org/wiki/Edit_distance" target="_blank" rel="external">edit distance</a>, <a href="https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient" target="_blank" rel="external">dice index</a>)<ul>
+<li><strong>micheal-&gt;michear</strong></li>
+<li><strong>from-&gt;form</strong></li>
+<li><strong>countryside-&gt;country side</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>简称(short name)<ul>
+<li>rule1:前两个词的首字符 <ul>
+<li><strong>北大-&gt;北京大学</strong></li>
+</ul>
+</li>
+<li>rule2:第一个词的首字符以及第二个词 <ul>
+<li><strong>中移动-&gt;中国移动通信公司</strong></li>
+</ul>
+</li>
+<li>rule3:前两个词 <ul>
+<li><strong>香港迪士尼-&gt;香港迪士尼乐园</strong><blockquote>
+<p><em>不全，总之简称包含于全称中</em><br>$$Sim(n_{e},n_{q})=\frac{\sum\nolimits_{w\in n_{q}}Len(LCS(w,n_{e}))}{\sum\nolimits_{w\in n_{q}}Len(w)}$$</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>别名(alias)<ul>
+<li>别名与正式名称字面相差很大</li>
+<li>使用外部搜索引擎</li>
+</ul>
+</li>
+</ol>
+<h5 id="候选集生成"><a href="#候选集生成" class="headerlink" title="候选集生成"></a>候选集生成</h5><ul>
+<li>raw query: 在知识库中直接搜索<code>m</code></li>
+<li>扩展多个名称：<ul>
+<li>借助外部搜索引擎(<code>m</code>+维基百科)</li>
+<li>借助简称形成的规则</li>
+</ul>
+</li>
+<li>借助字面相似度<br>$$jaccard(A, B) = \frac{|A \bigcap B|}{ |A\bigcup B|}$$<br>$$Dice(A, B) = \frac{2|A \bigcap B|}{ |A|+ |B|}$$<img src="/2016/08/17/实体链接技术/edit_distance.svg" alt="edit distance" title="edit distance"></li>
+<li>借助拼音距离<blockquote>
+<p>平舌音-&gt;翘舌音<br>前鼻音-&gt;后鼻音<br>l-&gt;n</p>
+</blockquote>
+</li>
+<li>带权重<br>给各种方法加上权重，设置thredhold，缩小候选集大小</li>
+<li>以上方法的组合</li>
+</ul>
+<h5 id="实体消歧"><a href="#实体消歧" class="headerlink" title="实体消歧"></a>实体消歧</h5><ul>
+<li>基于TF-IDF值计算相似度<br>$$tf-idf<em>{t,d} = (1 +\log tf</em>{t,d}) \cdot \log \frac{N}{df_t}$$<ol>
+<li>利用TFIDF值提取microblog的特征词<ol>
+<li>候选实体的描述文字踹出现的特征词的tfidf相加作为该候选实体的相似度</li>
+</ol>
+</li>
+<li>取相似度最大的候选实体</li>
+</ol>
+</li>
+<li>基于word2vec计算相似度:把词汇向量化之后，计算microblog特征词与候选实体特征词的相关度<figure class="highlight java"><figcaption><span>similarity of two words</span></figcaption><table><tr><td class="code"><pre><div class="line">word1=[a1, a2, a3, …, an]</div><div class="line">word2=[b1, b2, b3, …, bn]</div><div class="line">—————</div><div class="line">word2vec(word1, word2)</div><div class="line">	result=word1·word2/(|word1|*|word2|)</div><div class="line">	<span class="keyword">return</span> result</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight java"><figcaption><span>similarity of two word sets</span></figcaption><table><tr><td class="code"><pre><div class="line">S1=[w1,w2,…,wn]</div><div class="line">S2=[w’<span class="number">1</span>,w’<span class="number">2</span>,…,w’m]</div><div class="line">——————</div><div class="line">TwoSetsRelevance(S1, S2)</div><div class="line">sum_relevance=<span class="number">0</span></div><div class="line">k=-<span class="number">1</span></div><div class="line">sim=<span class="number">0</span></div><div class="line">foreach wi in S1</div><div class="line">	foreach w’j in S2</div><div class="line">		w2v=word2vec(wi,w’j)</div><div class="line">		<span class="keyword">if</span> w2v&gt;sim</div><div class="line">			k=j</div><div class="line">			sim=w2v</div><div class="line">	remove w’k in S2</div><div class="line">	sum_relevance=sum_relevance+sim</div><div class="line">	sim=-<span class="number">1</span>;</div><div class="line">	k=-<span class="number">1</span>;</div><div class="line"><span class="keyword">return</span> sum_relevance/the_number_of_S1’s_element;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>disambiguation</span></figcaption><table><tr><td class="code"><pre><div class="line">MB(<span class="keyword">short</span> <span class="keyword">for</span> microblog)=[w1,w2, …, wn]</div><div class="line">CandidateSet=Epro=[E1,E2,… Ep]</div><div class="line">Ei=[w’<span class="number">1</span>,w’<span class="number">2</span>,…, w’l]  i \in &#123;<span class="number">1</span>, <span class="number">2</span>,…, p&#125;</div><div class="line">—————</div><div class="line">EntityDisambiguation(MB,CandiateSet)</div><div class="line">foreach ei in Epro</div><div class="line">	<span class="keyword">if</span> Ei \in Eraw</div><div class="line">		relevance = (<span class="number">1</span>+ratio)*TwoSetsRelevance(MB,Ei)</div><div class="line">	<span class="keyword">else</span> relevance=TwoSetsRelevance(MB,Ei)</div><div class="line">	<span class="keyword">if</span> relevance&gt;Threshold</div><div class="line">		<span class="keyword">return</span> Ei</div><div class="line"><span class="keyword">return</span> “NILL”</div></pre></td></tr></table></figure>
+<ul>
+<li>基于标签(主题)<img src="/2016/08/17/实体链接技术/label.png" alt="entity linking based on label" title="entity linking based on label"></li>
+<li>图：出入度大小</li>
+<li>流行度<ul>
+<li>实体被浏览的次数</li>
+<li>描述实体文本的长度</li>
+<li>被其他实体描述页面引用的次数</li>
+</ul>
+</li>
+<li>以上各种方法的组合，加上权重，设置thredhold</li>
+</ul>
+<h5 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h5><ul>
+<li>自然语言处理工具: <a href="https://github.com/iurisilvio/smallseg" target="_blank" rel="external">smallseg</a> (<em><a href="https://code.google.com/archive/p/smallseg/" target="_blank" rel="external">originalVision(crossing GFW needed)</a></em>),  <a href="https://github.com/hankcs/HanLP" target="_blank" rel="external">HanLP</a>, <a href="http://stanfordnlp.github.io/CoreNLP/" target="_blank" rel="external">StanfordNLP</a></li>
+<li>网页爬虫：JSoup, BeautifulSoup, <a href="https://github.com/hplover/Gsearch_java" target="_blank" rel="external">Gsearch_java</a>,  <a href="https://github.com/meibenjin/GoogleSearchCrawler" target="_blank" rel="external">Gsearch_python</a></li>
+<li>word2vec: <a href="http://www.52nlp.cn/%E4%B8%AD%E8%8B%B1%E6%96%87%E7%BB%B4%E5%9F%BA%E7%99%BE%E7%A7%91%E8%AF%AD%E6%96%99%E4%B8%8A%E7%9A%84word2vec%E5%AE%9E%E9%AA%8C" target="_blank" rel="external">gensim</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/13/mac使用指南/" itemprop="url">
                   mac使用指南
                 </a>
@@ -303,100 +546,6 @@
 <li>首先需要安装<a href="http://brew.sh/" target="_blank" rel="external">homebrew</a></li>
 <li>接着输入<code>brew cask install mounty</code>，然后按提示操作即可</li>
 </ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/13/cmd-test-default/" itemprop="url">
-                  cmd_test_default
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-08-13T21:46:08+08:00" content="2016-08-13">
-              2016-08-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>cmd asdf;alskjdfakjsdf;lkajsdlk</p>
 
           
         
@@ -961,7 +1110,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -1083,7 +1232,24 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
