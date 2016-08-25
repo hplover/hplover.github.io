@@ -102,7 +102,7 @@ $\mathbb{E}$:">
 <meta property="og:image" content="http://yoursite.com/2016/08/17/实体链接技术/java_mount.png">
 <meta property="og:image" content="http://yoursite.com/2016/08/17/实体链接技术/edit_distance.svg">
 <meta property="og:image" content="http://yoursite.com/2016/08/17/实体链接技术/label.png">
-<meta property="og:updated_time" content="2016-08-25T07:00:06.000Z">
+<meta property="og:updated_time" content="2016-08-25T07:03:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实体链接技术研究">
 <meta name="twitter:description" content="实体链指的主要目标是识别文本中名称指代哪个现实世界中的实体。具体而言,实体链指是将给定文本中的个名称字符串映射到知识库中的相应实体上去,如果知识库尚未收录相应实体,则返回空标记。近些年,美国国家 标准技术研究所(NIST)举办了多次以实体链指为核心的国际评测任务。实体 链指在信息抽取、问答系统、机器翻译、信息检索等多个自然语言任务中都有着广泛的应用。
@@ -421,9 +421,9 @@ $\mathbb{E}$:">
 <li>取相似度最大的候选实体</li>
 </ol>
 </li>
-<li>基于word2vec计算相似度:把词汇向量化之后，计算microblog特征词与候选实体特征词的相关度<figure class="highlight java"><figcaption><span>similarity of two words</span></figcaption><table><tr><td class="code"><pre><div class="line">word1=[a1, a2, a3, …, an]</div><div class="line">word2=[b1, b2, b3, …, bn]</div><div class="line">—————</div><div class="line">word2vec(word1, word2)</div><div class="line">	result=word1·word2/(|word1|*|word2|)</div><div class="line">	<span class="keyword">return</span> result</div></pre></td></tr></table></figure>
-</li>
+<li>基于word2vec计算相似度:把词汇向量化之后，计算microblog特征词与候选实体特征词的相关度</li>
 </ul>
+<figure class="highlight java"><figcaption><span>similarity of two words</span></figcaption><table><tr><td class="code"><pre><div class="line">word1=[a1, a2, a3, …, an]</div><div class="line">word2=[b1, b2, b3, …, bn]</div><div class="line">—————</div><div class="line">word2vec(word1, word2)</div><div class="line">	result=word1·word2/(|word1|*|word2|)</div><div class="line">	<span class="keyword">return</span> result</div></pre></td></tr></table></figure>
 <figure class="highlight java"><figcaption><span>similarity of two word sets</span></figcaption><table><tr><td class="code"><pre><div class="line">S1=[w1,w2,…,wn]</div><div class="line">S2=[w’<span class="number">1</span>,w’<span class="number">2</span>,…,w’m]</div><div class="line">——————</div><div class="line">TwoSetsRelevance(S1, S2)</div><div class="line">sum_relevance=<span class="number">0</span></div><div class="line">k=-<span class="number">1</span></div><div class="line">sim=<span class="number">0</span></div><div class="line">foreach wi in S1</div><div class="line">	foreach w’j in S2</div><div class="line">		w2v=word2vec(wi,w’j)</div><div class="line">		<span class="keyword">if</span> w2v&gt;sim</div><div class="line">			k=j</div><div class="line">			sim=w2v</div><div class="line">	remove w’k in S2</div><div class="line">	sum_relevance=sum_relevance+sim</div><div class="line">	sim=-<span class="number">1</span>;</div><div class="line">	k=-<span class="number">1</span>;</div><div class="line"><span class="keyword">return</span> sum_relevance/the_number_of_S1’s_element;</div></pre></td></tr></table></figure>
 <figure class="highlight java"><figcaption><span>disambiguation</span></figcaption><table><tr><td class="code"><pre><div class="line">MB(<span class="keyword">short</span> <span class="keyword">for</span> microblog)=[w1,w2, …, wn]</div><div class="line">CandidateSet=Epro=[E1,E2,… Ep]</div><div class="line">Ei=[w’<span class="number">1</span>,w’<span class="number">2</span>,…, w’l]  i \in &#123;<span class="number">1</span>, <span class="number">2</span>,…, p&#125;</div><div class="line">—————</div><div class="line">EntityDisambiguation(MB,CandiateSet)</div><div class="line">foreach ei in Epro</div><div class="line">	<span class="keyword">if</span> Ei \in Eraw</div><div class="line">		relevance = (<span class="number">1</span>+ratio)*TwoSetsRelevance(MB,Ei)</div><div class="line">	<span class="keyword">else</span> relevance=TwoSetsRelevance(MB,Ei)</div><div class="line">	<span class="keyword">if</span> relevance&gt;Threshold</div><div class="line">		<span class="keyword">return</span> Ei</div><div class="line"><span class="keyword">return</span> “NILL”</div></pre></td></tr></table></figure>
 <ul>
