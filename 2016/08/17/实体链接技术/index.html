@@ -102,7 +102,7 @@ $\mathbb{E}$:">
 <meta property="og:image" content="http://yoursite.com/2016/08/17/实体链接技术/java_mount.png">
 <meta property="og:image" content="http://yoursite.com/2016/08/17/实体链接技术/edit_distance.svg">
 <meta property="og:image" content="http://yoursite.com/2016/08/17/实体链接技术/label.png">
-<meta property="og:updated_time" content="2016-08-25T07:56:07.000Z">
+<meta property="og:updated_time" content="2016-08-25T11:27:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实体链接技术研究">
 <meta name="twitter:description" content="实体链指的主要目标是识别文本中名称指代哪个现实世界中的实体。具体而言,实体链指是将给定文本中的个名称字符串映射到知识库中的相应实体上去,如果知识库尚未收录相应实体,则返回空标记。近些年,美国国家 标准技术研究所(NIST)举办了多次以实体链指为核心的国际评测任务。实体 链指在信息抽取、问答系统、机器翻译、信息检索等多个自然语言任务中都有着广泛的应用。
@@ -415,14 +415,14 @@ $\mathbb{E}$:">
 <h5 id="实体消歧"><a href="#实体消歧" class="headerlink" title="实体消歧"></a>实体消歧</h5><ul>
 <li>基于TF-IDF值计算相似度<br>$tf-idf_{t,d} = (1 +\log tf_{t,d}) \cdot \log \frac{N}{df_t}$<ol>
 <li>利用TFIDF值提取microblog的特征词</li>
-<li>候选实体的描述文字踹出现的特征词的<code>tf-idf值</code>相加作为该候选实体的<strong>相似度</strong></li>
+<li>候选实体的描述文字出现的特征词的<code>tf-idf值</code>相加作为该候选实体的<strong>相似度</strong></li>
 <li>取<strong>相似度最大</strong>的候选实体</li>
 </ol>
 </li>
 <li>基于word2vec计算相似度:把词汇向量化之后，计算microblog特征词与候选实体特征词的相关度</li>
 </ul>
 <figure class="highlight plain"><figcaption><span>similarity of two words</span></figcaption><table><tr><td class="code"><pre><div class="line">word1=[a1, a2, a3, …, an]</div><div class="line">word2=[b1, b2, b3, …, bn]</div><div class="line">—————</div><div class="line">word2vec(word1, word2)</div><div class="line">	result=word1·word2/(|word1|*|word2|)</div><div class="line">	return result</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>similarity of two word sets</span></figcaption><table><tr><td class="code"><pre><div class="line">S1=[w1,w2,…,wn]</div><div class="line">S2=[w’1,w’2,…,w’m]</div><div class="line">——————</div><div class="line">TwoSetsRelevance(S1, S2)</div><div class="line">sum_relevance=0</div><div class="line">k=-1</div><div class="line">sim=0</div><div class="line">foreach wi in S1</div><div class="line">	foreach w’j in S2</div><div class="line">		w2v=word2vec(wi,w’j)</div><div class="line">		if w2v&gt;sim</div><div class="line">			k=j</div><div class="line">			sim=w2v</div><div class="line">	remove w’k in S2</div><div class="line">	sum_relevance=sum_relevance+sim</div><div class="line">	sim=-1;</div><div class="line">	k=-1;</div><div class="line">return sum_relevance/the_number_of_S1’s_element;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>similarity of two word sets</span></figcaption><table><tr><td class="code"><pre><div class="line">S1=[w1,w2,…,wn]</div><div class="line">S2=[w’1,w’2,…,w’m]</div><div class="line">——————</div><div class="line">TwoSetsRelevance(S1, S2)</div><div class="line">sum_relevance=0</div><div class="line">k=-1</div><div class="line">sim=0</div><div class="line">foreach wi in S1</div><div class="line">	foreach w’j in S2</div><div class="line">		w2v=word2vec(wi,w’j)</div><div class="line">		if w2v&gt;sim</div><div class="line">			k=j</div><div class="line">			sim=w2v</div><div class="line">	remove w’k in S2</div><div class="line">	sum_relevance=sum_relevance+sim</div><div class="line">	sim=0;</div><div class="line">	k=-1;</div><div class="line">return sum_relevance/the_number_of_S1’s_element;</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><figcaption><span>disambiguation</span></figcaption><table><tr><td class="code"><pre><div class="line">MB(short for microblog)=[w1,w2, …, wn]</div><div class="line">CandidateSet=Epro=[E1,E2,… Ep]</div><div class="line">Ei=[w’1,w’2,…, w’l]  $i \in &#123;1, 2,…, p&#125;$</div><div class="line">—————</div><div class="line">EntityDisambiguation(MB,CandiateSet)</div><div class="line">foreach ei in Epro</div><div class="line">	if Ei \in Eraw</div><div class="line">		relevance = (1+ratio)*TwoSetsRelevance(MB,Ei)</div><div class="line">	else relevance=TwoSetsRelevance(MB,Ei)</div><div class="line">	if relevance&gt;Threshold</div><div class="line">		return Ei</div><div class="line">return “NILL”</div></pre></td></tr></table></figure>
 <ul>
 <li>基于标签(主题)<img src="/2016/08/17/实体链接技术/label.png" alt="entity linking based on label" title="entity linking based on label"></li>
@@ -479,6 +479,10 @@ $\mathbb{E}$:">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/09/front-end-interview-related/" rel="prev" title="front end interview related">
+                front end interview related <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -546,7 +550,7 @@ $\mathbb{E}$:">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -563,7 +567,7 @@ $\mathbb{E}$:">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
